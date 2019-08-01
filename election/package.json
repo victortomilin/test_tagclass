@@ -7,10 +7,11 @@
     "tape": "^4.2.2"
   },
   "devDependencies": {
+    "standard": "^13.1.0",
     "tape": "^4.2.2"
   },
   "scripts": {
-    "test": "tape election_test.js"
+    "test": "standard && tape election_test.js"
   },
   "author": "",
   "license": "ISC"
