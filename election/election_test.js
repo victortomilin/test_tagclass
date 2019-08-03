@@ -23,3 +23,14 @@ test('election runoff with tie', function (t) {
   results.sort(function (a, b) { return a - b })
   t.same(results, [1, 2, 3, 4, 5])
 })
+
+test('performance stability', function (t) {
+  t.plan(1)
+  var majorityWinnerVotes = Array(8007199).fill(1)
+  var randomVotes = Array.from({ length: 4000000 }, () => Math.floor(Math.random() * 400))
+  var votes = randomVotes.concat(majorityWinnerVotes)
+  console.time('election.tally')
+  var results = election.tally(votes)
+  console.timeEnd('election.tally')
+  t.same(results, [1])
+})
