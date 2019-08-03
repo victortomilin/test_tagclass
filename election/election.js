@@ -1,3 +1,14 @@
+//
+// Performance issue
+//
+// Well, to make this algorithm much more faster
+// I can suggest to split the entire array of votes by the fragments.
+// Then each fragment will be sent to `tally` function which will be ran in cluster.
+// That's means we could use multithreading to calculate winners.
+// But I couldn't apply this approach by unit tests reason. But at least
+// I have made a unit test to check is my alghorithm will be sutible to calculate
+// 10 millions votes for 401 candidates. Looks like it works quite good.
+
 function countVotes (votes) {
   const VOTE = 1
   const counts = {}
